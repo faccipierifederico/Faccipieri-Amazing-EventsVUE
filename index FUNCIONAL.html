@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es"> 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazing Events</title>
+
+    <link rel="shortcut icon" href="./assets/img/Logo_Amazing-Events.ico" type="image/x-icon">
+
+    <!-- Bootstrap v5.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <!-- Icono bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-warning bg-gradient">
+            <div class="container-fluid">
+                <a href="./index.html" class="navbar-brand">
+                    <img class="logo" src="./assets/img/Logo_Amazing-Events.png" alt="Logo Amazing Events">
+                </a>
+                <div class="d-flex justify-content-end">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <a class="btn btn-outline-danger active mx-2 shadow" aria-current="page" href="#">Home</a>
+                            <a class="btn btn-outline-danger mx-2 shadow" href="./upcomingEvents.html">Upcomig Events</a>
+                            <a class="btn btn-outline-danger mx-2 shadow" href="./pastEvents.html">Past Events</a>
+                            <a class="btn btn-outline-danger mx-2 shadow" href="./contact.html">Contact</a>
+                            <a class="btn btn-outline-danger mx-2 shadow" href="./stats.html">Stats</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- <div id="carouselExampleInterval" class="carousel slide pt-1" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active" data-bs-interval="2000">
+                <img src="https://i.postimg.cc/KYD0jMf2/comicon.jpg" class="d-block w-100" alt="music concert">
+              </div>
+              <div class="carousel-item" data-bs-interval="2000">
+                <img src="https://i.postimg.cc/05FhxHVK/book4.jpg" class="d-block w-100" alt="museum tour">
+              </div>
+              <div class="carousel-item" data-bs-interval="2000">
+                <img src="https://i.postimg.cc/Sst763n6/book1.jpg" class="d-block w-100" alt="marathon">
+              </div>
+              <div class="carousel-item" data-bs-interval="2000">
+                <img src="https://i.postimg.cc/Fs03hQDt/Collectivities-Party.jpg" class="d-block w-100" alt="marathon">
+              </div>
+              <div class="carousel-item" data-bs-interval="2000">
+                <img src="https://i.postimg.cc/ZmD3Xf57/Korean-style.jpg" class="d-block w-100" alt="marathon">
+              </div>
+              <div class="carousel-item" data-bs-interval="2000">
+                <img src="https://i.postimg.cc/GmHRkbNV/Jurassic-Park.jpg" class="d-block w-100" alt="marathon">
+              </div>
+              <div class="carousel-item" data-bs-interval="2000">
+                <img src="https://i.postimg.cc/c4C2zXm8/Parisian-Museum.jpg" class="d-block w-100" alt="marathon">
+              </div>
+              <div class="carousel-item" data-bs-interval="2000">
+                <img src="https://i.postimg.cc/RZ9fH4Pr/halloween.jpg" class="d-block w-100" alt="marathon">
+              </div>
+              <div class="carousel-item" data-bs-interval="2000">
+                <img src="https://i.postimg.cc/PrMJ0ZMc/Metallica-in-concert.jpg" class="d-block w-100" alt="marathon">
+              </div>
+              <div class="carousel-item" data-bs-interval="2000">
+                <img src="https://i.postimg.cc/KvsSK8cj/Electronic-Fest.jpg" class="d-block w-100" alt="marathon">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+        </div> -->
+
+        <div id="app">
+
+              <template v-for="category of checksFilter">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5 mx-3">
+                  <div class="col-auto mx-5">
+                    <div class="form-check category1 category" id="form-category">
+                      <label class="form-check-label">
+                        {{ category }}
+                        <input class="form-check-input mx-1 shadow prueba" v-on:change="filtro" v-model="checked" type="checkbox" :value="category">
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </template>
+
+              <div class="input-group mb-3">
+                <button class="btn btn-outline-danger" type="button" id="button-addon1"></button>
+                <input type="text" class="form-control" placeholder="buscar" v-model="valorBusquedad" v-on:keyup="filtro">
+              </div>
+
+                <!-- <div id="filter-category" class="d-flex gap-3 p-5 justify-content-center flex-wrap">
+                </div>
+                <div class="d-flex p-5 justify-content-center flex-wrap search-div col-12 col-sm-12 col-md-12 col-lg-12">
+                  <button class="btn btn-outline-dark" type="submit" v-on:click="filtrarPorInputTexto">
+                    Search
+                  </button>  
+                  <form class="d-flex" role="search">
+                      <input
+                        id="searchNav"
+                        class="form-control me-2 col-12"
+                        type="search"
+                        placeholder="Place a word"
+                        aria-label="Search"
+                        v-model="nombreIngresado"
+                      />
+                    </form>
+                </div> -->
+              
+            <div class="d-flex flex-wrap gap-3">
+              <template v-if="eventosFiltrados.length > 0" v-for="evento of eventosFiltrados">
+                  <div class="card m-4" style="width: 18rem;">
+                    <img :src="evento.image" class="card-img-top" alt="">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ evento.name }}</h5>
+                      <p class="card-text">{{ evento.description }}</p>
+                      <a class="btn btn-primary">See more</a>
+                    </div>
+                  </div>
+              </template>
+              <temaplate v-else>    
+                <div>
+                  <h2>No hay eventos</h2>
+                </div>
+              </temaplate>
+                <!-- <div class="card m-4" style="width: 18rem;">                        v-for="evento of eventos" 
+                  <img :src="evento.image" class="card-img-top" alt="">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ evento.name }}</h5>
+                    <p class="card-text">{{ evento.description }}</p>
+                    <a class="btn btn-primary">See more</a>
+                  </div>
+                </div> -->
+              <!-- </temaplate> -->
+            </div>
+
+
+
+
+                <!-- Contenedor de los check-box -->
+          <!--  <div class="d-flex justify-content-around conte" id="containerCheckHome"> 
+
+              <nav class="navbar ms-5">
+                      <form class="d-flex nav-search" role="search">
+                        <input class="form-control shadow ms-3" type="search" placeholder="Search" aria-label="Search" id="input-search">
+                      </form>
+              </nav>
+            </div> -->
+
+              <!-- Contenedor de cards -->
+            <!--   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5 mx-3" id="containerHome">
+
+              </div> -->
+
+        </div>
+
+
+    </main>
+
+    <footer class="bg-warning bg-gradient d-flex justify-content-between align-items-center mt-3 pb-1">
+      <div class="d-flex">
+          <a class="nav nav-link" href="#">
+            <i class="bi bi-instagram text-dark fs-3 "></i>
+          </a>
+          <a class="nav nav-link" href="#">
+            <i class="bi bi-facebook text-dark fs-3"></i>
+          </a> 
+          <a class="nav nav-link" href="#">
+            <i class="bi bi-whatsapp text-dark fs-3"></i>
+          </a>
+      </div>
+      <div class="fs-6">Copyright Kalimocho 2023 &copy; by Fabián Enrique García \ Todos los derechos reservados</div>
+      <div>
+        <p class="h1 pe-5">Cohort 08TN</p>
+      </div>
+    </footer>    
+
+    <!-- Bootstrap v5.3 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+    <!-- Vue -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    
+    <!-- <script src="./assets/js/data.js"></script> -->
+    <script src="./assets/js/index.js"></script>
+    
+
+</body>
+</html>
