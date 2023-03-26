@@ -113,10 +113,6 @@ footer div{
 .card h5{
     color:rgba(253, 215, 43, 0.671)
 }
-/* 
-.img-cards{
-    mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.199), rgba(0, 0, 0, 0.233), rgba(255, 208, 1, 0.466)) !important;
-} */
 
 .card-text{
     color: rgba(255, 208, 1, 0.466);
